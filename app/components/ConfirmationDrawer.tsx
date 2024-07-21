@@ -19,6 +19,7 @@ import {
   Thead,
   Tr,
   IconButton,
+  Container,
 } from "@chakra-ui/react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaRegEdit } from "react-icons/fa";
@@ -39,92 +40,99 @@ export const ConfirmationDrawer = ({ isOpen, onClose, onCloseOrder }: any) => {
   };
 
   return (
-    <Drawer onClose={handleCancel} isOpen={isOpen} size={"full"}>
+    <Drawer
+      onClose={handleCancel}
+      isOpen={isOpen}
+      size={"xl"}
+      placement="bottom"
+    >
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent h={"90dvh"} borderTopRadius={"10"}>
         <DrawerCloseButton />
-        <DrawerHeader>Confirm stock updates</DrawerHeader>
-        <DrawerBody>
-          <Flex direction="column">
-            <Box>
-              <Text>Remaining stock</Text>
-              <Text fontSize={"2em"}>+333 pcs</Text>
-            </Box>
-
-            <Flex mt={"1em"} gap={"8em"}>
+        <Container maxW={"1024px"} my={"3em"}>
+          <DrawerHeader>Confirm stock updates</DrawerHeader>
+          <DrawerBody>
+            <Flex direction="column">
               <Box>
-                <Text fontSize={"1em"} fontWeight={"700"}>
-                  In System
-                </Text>
-                <Text>10 pcs</Text>
+                <Text>Remaining stock</Text>
+                <Text fontSize={"2em"}>+333 pcs</Text>
               </Box>
 
-              <Flex alignItems={"center"} gap={"1em"}>
-                <FaArrowRightLong />
+              <Flex mt={"1em"} gap={"8em"}>
                 <Box>
                   <Text fontSize={"1em"} fontWeight={"700"}>
-                    Result update stock
+                    In System
                   </Text>
-                  <Text>323 pcs</Text>
+                  <Text>10 pcs</Text>
                 </Box>
+
+                <Flex alignItems={"center"} gap={"1em"}>
+                  <FaArrowRightLong />
+                  <Box>
+                    <Text fontSize={"1em"} fontWeight={"700"}>
+                      Result update stock
+                    </Text>
+                    <Text>323 pcs</Text>
+                  </Box>
+                </Flex>
+              </Flex>
+
+              <Flex mt={"2em"} direction={"column"}>
+                <TableContainer>
+                  <Table size="sm">
+                    <Thead>
+                      <Tr>
+                        <Th>Activity</Th>
+                        <Th>Details</Th>
+                        <Th>Quantity</Th>
+                        <Th isNumeric>Action</Th>
+                      </Tr>
+                    </Thead>
+                    <Tbody>
+                      <Tr>
+                        <Td>
+                          <chakra.span>Update Stock</chakra.span> <br />{" "}
+                          <chakra.span fontSize={"smaller"} color={"grey"}>
+                            22 July 2024, 08.00
+                          </chakra.span>
+                        </Td>
+                        <Td>3 pcs, 45 lusin (12s)</Td>
+                        <Td color={"green"}>+30</Td>
+                        <Td isNumeric>
+                          <IconButton
+                            variant={"none"}
+                            color={"#006A7A"}
+                            aria-label="Edit Pokemon"
+                            icon={<FaRegEdit />}
+                            onClick={handleEditAgainPokemon}
+                          />
+                        </Td>
+                      </Tr>
+                    </Tbody>
+                  </Table>
+                </TableContainer>
               </Flex>
             </Flex>
+          </DrawerBody>
 
-            <Flex mt={"2em"} direction={"column"}>
-              <TableContainer>
-                <Table size="sm">
-                  <Thead>
-                    <Tr>
-                      <Th>Activity</Th>
-                      <Th>Details</Th>
-                      <Th>Quantity</Th>
-                      <Th isNumeric>Action</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    <Tr>
-                      <Td>
-                        <chakra.span>Update Stock</chakra.span> <br />{" "}
-                        <chakra.span fontSize={"smaller"} color={"grey"}>
-                          22 July 2024, 08.00
-                        </chakra.span>
-                      </Td>
-                      <Td>3 pcs, 45 lusin (12s)</Td>
-                      <Td color={"green"}>+30</Td>
-                      <Td isNumeric>
-                        <IconButton
-                          variant={"none"}
-                          color={"#006A7A"}
-                          aria-label="Edit Pokemon"
-                          icon={<FaRegEdit />}
-                          onClick={handleEditAgainPokemon}
-                        />
-                      </Td>
-                    </Tr>
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </Flex>
-          </Flex>
-        </DrawerBody>
-
-        <DrawerFooter>
-          <Button
-            color={"#006A7A"}
-            variant="outline"
-            mr={3}
-            onClick={handleCancel}
-          >
-            Cancel
-          </Button>
-          <Button
-            onClick={handleSubmitStockPokemon}
-            bg={"#006A7A"}
-            color={"white"}
-          >
-            Save
-          </Button>
-        </DrawerFooter>
+          <DrawerFooter>
+            <Button
+              color={"#006A7A"}
+              variant="outline"
+              mr={3}
+              onClick={handleCancel}
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleSubmitStockPokemon}
+              bg={"#006A7A"}
+              color={"white"}
+            >
+              Save
+            </Button>
+          </DrawerFooter>
+        </Container>
       </DrawerContent>
     </Drawer>
   );
