@@ -104,7 +104,7 @@ export const UpdateStockModal = ({
             color={"white"}
             mr={3}
           >
-            Save
+            Submit
           </Button>
         </ModalFooter>
       </ModalContent>

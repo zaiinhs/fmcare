@@ -59,17 +59,23 @@ export default function Home() {
             </Text>
           </Flex>
 
-          <Box height={"70dvh"} overflowY={"scroll"} lineHeight={"3em"}>
+          <Box
+            height={"60dvh"}
+            className="scroll_pokemon"
+            overflowY={"scroll"}
+            lineHeight={"3em"}
+          >
             {dataSelected.length !== 0 && dataSelected[0] !== undefined ? (
               dataSelected.map((item: any) => {
                 return (
                   <Button
+                    _hover={{ bg: "grey", color: "white" }}
                     as={"div"}
                     variant={"none"}
                     width={"100%"}
                     cursor={"pointer"}
                     justifyContent={"space-between"}
-                    onClick={() => console.log(item)}
+                    onClick={() => handleDetailPage(item)}
                     key={item?.id}
                   >
                     <Text fontWeight={"500"}>{item?.name}</Text>
@@ -87,6 +93,7 @@ export default function Home() {
               DATA_POKEMON.map((item: any) => {
                 return (
                   <Button
+                    _hover={{ bg: "grey", color: "white" }}
                     as={"div"}
                     variant={"none"}
                     width={"100%"}
