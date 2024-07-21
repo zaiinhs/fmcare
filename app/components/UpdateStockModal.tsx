@@ -25,7 +25,12 @@ export const UpdateStockModal = ({
     onOpenConfirmation();
   };
   return (
-    <Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isCentered
+      closeOnOverlayClick={false}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <ModalOverlay />
       <ModalContent m={"1em"}>
         <ModalHeader>Update Stock</ModalHeader>
